@@ -1,0 +1,364 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yasmin Lavictoire • Dog-Themed CV</title>
+  <meta name="description" content="The playful, dog-themed CV of Yasmin Lavictoire." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23333' d='M24 18c0 4-3 7-7 7s-7-3-7-7 3-7 7-7 7 3 7 7zm30 3c0 4-3 7-7 7s-7-3-7-7 3-7 7-7 7 3 7 7zM22 41c0-7 10-11 10-11s10 4 10 11-4 11-10 11-10-4-10-11z'/%3E%3C/svg%accent-dark: #b85f49;
+      --paw: #8d99ae;         /* muted grey-blue */
+      --grass: #81b29a;       /* green accent */
+      --link: #3d5a80;        /* link color */
+      --shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    /* Dark mode (toggle-able) */
+    .dark {
+      --bg: #1f1f1f;
+      --paper: #2a2a2a;
+      --ink: #eaeaea;
+      --accent: #f28c6e;
+      --accent-dark: #c46e55;
+      --paw: #9aa7bd;
+      --grass: #9fd6be;
+      --link: #a8c0ff;
+      --shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Subtle repeating paw-print background */
+    body {
+      margin: 0;
+      background-image:
+        radial-gradient(circle at 20px 20px, rgba(141,153,174,0.15) 3px, transparent 4px),
+        radial-gradient(circle at 60px 40px, rgba(141,153,174,0.12) 2.5px, transparent 3.5px);
+      background-size: 120px 120px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      position: relative;
+      margin: 24px auto 16px;
+      padding: 20px 24px;
+      background: var(--paper);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+
+    /* Bone-shaped accent bar behind header */
+    header::before {
+      content: "";
+      position: absolute;
+      inset: -16px -8px auto -8px;
+      height: 80px;
+      background:
+        radial-gradient(circle at left 50%, var(--accent) 16px, transparent 17px) left center / 50px 100% no-repeat,
+        radial-gradient(circle at right 50%, var(--accent) 16px, transparent 17px) right center / 50px 100% no-repeat,
+        linear-gradient(var(--accent), var(--accent)) center / calc(100% - 100px) 36px no-repeat;
+      border-radius: 999px;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 4px solid var(--accent);
+      background: #ddd;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .title h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      letter-spacing: 0.5px;
+    }
+    .title .tagline {
+      margin-top: 6px;
+      color: #555;
+    }
+    .dark .title .tagline { color: #cfcfcf; }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      appearance: none;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      transition: transform 120ms ease, background 120ms ease;
+    }
+    .btn:hover { transform: translateY(-1px); background: var(--accent-dark); }
+    .btn:active { transform: translateY(0); }
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 8px;
+    }
+    @media (min-width: 820px) {
+      main {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: var(--paper);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card h2 {
+      margin: 0 0 12px 0;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-icon {
+      width: 28px; height: 28px;
+      display: inline-block;
+    }
+
+    /* Decorative paw prints drifting */
+    .paws {
+      position: absolute;
+      pointer-events: none;
+      inset: 0;
+      opacity: 0.08;
+    }
+    .paw {
+      position: absolute;
+      width: 26px; height: 26px;
+      animation: drift 9s linear infinite;
+    }
+    @keyframes drift {
+      from { transform: translateY(40px) rotate(0deg); }
+      to   { transform: translateY(-160px) rotate(8deg); }
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+    .chip {
+      display: inline-block;
+      background: rgba(129,178,154,0.18);
+      color: var(--ink);
+      border: 1px solid rgba(129,178,154,0.35);
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin: 6px 6px 0 0;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin: 18px auto 28px;
+      text-align: center;
+      color: #666;
+    }
+    .dark footer { color: #c7c7c7; }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Accessibility & focus */
+    .btn:focus,
+    a:focus { outline: 3px solid var(--grass); outline-offset: 2px; }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header aria-label="Header">
+      <figure class="avatar">
+        <img
+          src="https://www.silvernickelpuppies.com/wp-content/uploads/2025/06/IMG_5750-1024x1014.jpg"
+          alt="Yasmin Lavictoire profile image (adorable puppy aesthetic)"
+          width="120"
+         ging tails, and rolling forward. 🐕✨</p>
+      </div>
+
+      <div class="controls">
+        <button class="btn" id="themeToggle" aria-label="Toggle dark mode">🌙 Theme</button>
+        #contact✉️ Contact</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Education -->
+      <section class="card" aria-labelledby="edu-title">
+        <svg class="paws" aria-hidden="true">
+          <!-- A few floating paws -->
+          <g class="paw" style="left:12px; bottom:-20px">
+            <circle cx="12" cy="12" r="12" fill="var(--paw)" />
+          </g>
+          <g class="paw" style="left:64px; bottom:-40px; animation-duration: 11s">
+            <circle cx="12" cy="12" r="12" fill="var(--paw)" />
+          </g>
+        </svg>
+        <h2 id="edu-title">
+          <span class="section-icon" aria-hidden="true">
+            <!-- Graduation cap with a tiny bone -->
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <path fill="var(--accent)" d="M32 10l26 12-26 12L6 22z" />
+              <path fill="var(--grass)" d="M16 28v10c0 4 16 6 16 6s16-2 16-6V28l-16 8z"/>
+              <path fill="var(--accent)" d="M46 40h4v12h-4z"/>
+              <rect x="43" y="51" width="10" height="4" rx="2" fill="var(--accent)"/>
+            </svg>
+          </span>
+          Education
+        </h2>
+        <p><strong>MRes Psychological Methods</strong></p>
+        <p>Methodology with bite: advanced research design, statistics, measurement, and reproducible workflows.</p>
+      </section>
+
+      <!-- About / Loves -->
+      <section class="card" aria-labelledby="love-title">
+        <svg class="paws" aria-hidden="true">
+          <g class="paw" style="right:20px; bottom:-30px; animation-duration: 10s">
+            <circle cx="12" cy="12" r="12" fill="var(--paw)" />
+          </g>
+          <g class="paw" style="right:72px; bottom:-50px; animation-duration: 12s">
+            <circle cx="12" cy="12" r="12" fill="var(--paw)" />
+          </g>
+        </svg>
+        <h2 id="love-title">
+          <span class="section-icon" aria-hidden="true">
+            <!-- Heart + paw -->
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <path fill="var(--accent)" d="M32 56s-20-12-20-26a12 12 0 0 1 20-8 12 12 0 0 1 20 8c0 14-20 26-20 26z"/>
+              <circle cx="18" cy="18" r="5" fill="var(--grass)"/>
+            </svg>
+          </span>
+          Things I Love
+        </h2>
+        <div>
+          <span class="chip">Rollerskating 🛼</span>
+          <!-- Add more as you like:
+          <span class="chip">Dogs 🐶</span>
+          <span class="chip">Cognitive Science 🧠</span>
+          <span class="chip">Beach Walks 🌊</span>
+          -->
+        </div>
+        <p style="margin-top:10px">Always up for a roll in the park—preferably with a good pup and a great playlist.</p>
+      </section>
+
+      <!-- Experience (placeholder you can edit) -->
+      <section class="card" aria-labelledby="xp-title">
+        <h2 id="xp-title">
+          <span class="section-icon" aria-hidden="true">
+            <!-- Briefcase bone -->
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="18" width="44" height="32" rx="6" fill="var(--grass)" />
+              <rect x="24" y="12" width="16" height="8" rx="3" fill="var(--accent)" />
+              <rect x="10" y="30" width="44" height="6" fill="var(--accent)" />
+            </svg>
+          </span>
+          Experience
+        </h2>
+        <ul>
+          <li><strong>Research & Methods</strong> — Design, analysis, and interpretation with a wag. (Add specific roles, dates, and impact.)</li>
+          <li><strong>Data & Reproducibility</strong> — Clean pipelines, clear reporting, and well‑behaved results.</li>
+        </ul>
+      </section>
+
+      <!-- Skills (placeholder you can edit) -->
+      <section class="card" aria-labelledby="skills-title">
+        <h2 id="skills-title">
+          <span class="section-icon" aria-hidden="true">
+            <!-- Cog + paw -->
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="12" fill="var(--accent)"/>
+              <path fill="var(--grass)" d="M32 10h4l2 6 6 2v4l-6 2-2 6h-4l-2-6-6-2v-4l6-2z"/>
+            </svg>
+          </span>
+          Skills
+        </h2>
+        <div>
+          <span class="chip">Research Design</span>
+          <span class="chip">Statistical Analysis</span>
+          <span class="chip">Open Science</span>
+          <span class="chip">Scientific Writing</span>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="card" id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">
+          <span class="section-icon" aria-hidden="true">
+            <!-- Envelope -->
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="16" width="48" height="32" rx="6" fill="var(--grass)"/>
+              <path fill="var(--accent)" d="M10 18l22 16 22-16v6L32 40 10 24z"/>
+            </svg>
+          </span>
+          Contact
+        </h2>
+        <p>Let’s connect—no leash required!</p>
+        <ul>
+          <li>Email: mailto:yasmin@example.comyasmin@example.com</a></li>
+          <li>LinkedIn: #Add your profile</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <small>© <span id="year"></span> Yasmin Lavictoire • Built with ❤️, bones, and paw‑prints.</small>
+    </footer>
+  </div>
+
+  <script>
+    // Dark mode toggle (persisted)
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('dogTheme');
+    if (saved === 'dark') root.classList.add('dark');
+
+    btn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('dogTheme', root.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
